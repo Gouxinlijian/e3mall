@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import cn.e3.manager.service.ItemService;
 import cn.e3.pojo.TbItem;
 import cn.e3.utils.PageResult;
+import cn.e3.utils.TreeNode;
 
+//返回json 数据的 controller
 @RestController
 public class ItemController {
 	

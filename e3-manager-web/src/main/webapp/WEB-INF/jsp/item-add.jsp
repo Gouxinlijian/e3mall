@@ -77,8 +77,8 @@ tr{
 		itemAddEditor = E3MALL.createEditor("#itemAddForm [name=itemDesc]");
 		//初始化类目选择和图片上传器
 		E3MALL.init({fun:function(node){
-			//根据商品的分类id取商品 的规格模板，生成规格信息。第四天内容。
-			E3MALL.changeItemParam(node, "itemAddForm");
+			//根据商品的分类id取商品 的规格模板，生成规格信息。第四天内容。 暂时注掉
+			//E3MALL.changeItemParam(node, "itemAddForm");
 		}});
 	});
 	//提交表单

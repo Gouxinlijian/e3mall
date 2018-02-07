@@ -29,4 +29,11 @@
 		ref="itemServiceImpl" />
 	<!--创建商品服务对象 -->
 	<bean id="itemServiceImpl" class="cn.e3.manager.service.impl.ItemServiceImpl" />
+	
+	
+	<!-- 声明需要暴露的服务接口:发布商品分类服务 -->
+	<dubbo:service interface="cn.e3.manager.service.ItemCatService"
+		ref="itemCatServiceImpl" />
+	<!--创建商品服务对象 -->
+	<bean id="itemCatServiceImpl" class="cn.e3.manager.service.impl.ItemCatServiceImpl" />
 </beans>

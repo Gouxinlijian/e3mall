@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.e3.manager.service.ItemService;
 import cn.e3.pojo.TbItem;
+import cn.e3.pojo.TbItemDesc;
+import cn.e3.utils.E3mallResult;
 import cn.e3.utils.PageResult;
 import cn.e3.utils.TreeNode;
 
@@ -46,5 +48,17 @@ public class ItemController {
 		PageResult result = itemService.findItemListByPage(page, rows);
 		return result;
 	}
-
+	
+	/**
+	 * 需求:保存商品数据
+	 * 参数:TbItem item,TbItemDesc itemDesc
+	 * 返回值:E3mallResult
+	 * 
+	 */
+	@RequestMapping("/item/save")
+	public E3mallResult saveItem(TbItem item,TbItemDesc itemDesc){
+		System.out.println("进入方法");
+		E3mallResult result = itemService.saveItem(item, itemDesc);
+		return result;
+	}
 }

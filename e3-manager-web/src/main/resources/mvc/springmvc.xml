@@ -15,6 +15,8 @@
 	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 	http://www.springframework.org/schema/util
 	http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	<!-- 加载配置文件 -->
+	<context:property-placeholder location="classpath:resources.properties" />
 	<!-- 1,扫描controoler -->
 	<context:component-scan base-package="cn.e3.manager.controller"></context:component-scan>
 	<!-- 2,注解驱动 -->
@@ -25,5 +27,9 @@
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
+	</bean>
+	<!-- 文件上传支持 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="1024000000"></property>
 	</bean>
 </beans>

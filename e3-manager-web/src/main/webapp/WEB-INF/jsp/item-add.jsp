@@ -42,6 +42,7 @@ tr{
 	                <input class="easyui-textbox" type="text" name="barcode" data-options="validType:'length[1,30]'" />
 	            </td>
 	        </tr>
+	        
 	        <tr>
 	            <td>商品图片:</td>
 	            <td>

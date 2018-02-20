@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PageController {
 	
-	
+	/*
+	 * 访问门户首页
+	 */
 	@RequestMapping("index")
 	private String showPage(){
-		
 		return "index";
 	}
 

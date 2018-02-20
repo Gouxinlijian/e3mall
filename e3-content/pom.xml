@@ -29,12 +29,11 @@
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version>
 				<configuration>
 					<!-- /表示把项目发布到tomcat服务器跟路径[tomcat/webapps/ROOT/] -->
 					<path>/</path>
 					<!-- 启动端口 -->
-					<port>8083</port>
+					<port>8085</port>
 				</configuration>
 			</plugin>
 		</plugins>

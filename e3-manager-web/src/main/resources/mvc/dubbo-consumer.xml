@@ -25,9 +25,14 @@
 	<!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
 	<dubbo:reference id="itemService"
 		interface="cn.e3.manager.service.ItemService" />
-		
-		
 	<!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
 	<dubbo:reference id="itemCatService"
 		interface="cn.e3.manager.service.ItemCatService" />
+		
+		<!-- 引入广告分类服务 -->
+	<dubbo:reference id="contentCategoryService"
+		interface="cn.e3.content.service.ContentCategoryService" />
+	<!-- 引入广告内容服务 -->
+	<dubbo:reference id="contentService"
+		interface="cn.e3.content.service.ContentService" />
 </beans>

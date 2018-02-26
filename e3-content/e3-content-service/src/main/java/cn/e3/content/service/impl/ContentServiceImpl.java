@@ -1,9 +1,11 @@
 package cn.e3.content.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
@@ -14,6 +16,7 @@ import cn.e3.mapper.TbContentMapper;
 import cn.e3.pojo.TbContent;
 import cn.e3.pojo.TbContentExample;
 import cn.e3.pojo.TbContentExample.Criteria;
+import cn.e3.utils.AdItem;
 import cn.e3.utils.E3mallResult;
 import cn.e3.utils.PageResult;
 
@@ -71,5 +74,50 @@ public class ContentServiceImpl implements ContentService {
 		//执行保存
 		contentMapper.insertSelective(content);
 		return E3mallResult.ok();
+	}
+
+
+	//注入图片宽 高
+	@Value("${WIDTH}")
+	private Integer WIDTH;
+	@Value("${WIDTHB}")
+	private Integer WIDTHB;
+	@Value("${HEIGHT}")
+	private Integer HEIGHT;
+	@Value("${HEIGHTB}")
+	private Integer HEIGHTB;
+	
+	/**
+	 * 需求:通过categoryId查询广告信息
+	 * 参数:Long categoryId
+	 * 返回值:List<AdItem>
+	 * @param categoryId
+	 * @return
+	 */
+	public List<AdItem> findContentByCategoryId(Long categoryId) {
+		//创建门户系统展示广告信息集合
+		List<AdItem> AdList = new ArrayList<>();
+		TbContentExample example = new TbContentExample();
+		Criteria criteria = example.createCriteria();
+		//加入查询参数
+		criteria.andCategoryIdEqualTo(categoryId);
+		//通过contenMapper查询数据
+		List<TbContent> list = contentMapper.selectByExampleWithBLOBs(example);
+		//遍历获取到的广告信息集合
+		for (TbContent tbContent : list) {
+			//创建广告信息对象
+			AdItem adItem = new AdItem();
+			//封装广告信息数据
+			adItem.setAlt(tbContent.getSubTitle());
+			adItem.setHref(tbContent.getUrl());
+			adItem.setHeight(HEIGHT);
+			adItem.setHeightB(HEIGHTB);
+			adItem.setWidth(WIDTH);
+			adItem.setWidthB(WIDTHB);
+			adItem.setSrc(tbContent.getPic());
+			adItem.setSrcB(tbContent.getPic2());
+			AdList.add(adItem);
+		}
+		return AdList;
 	}
 }

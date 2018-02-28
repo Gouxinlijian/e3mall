@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.e3.search.mapper.SearchItemMapper" >
+<!-- 需求: 查询索引库域字段对应数据库字段值,把数据值导入索引库-->
+<!-- resultType: 要求查询数据库字段列名必须和映射javabean属性名称相同,且一一对应 -->
+	<select id="findDatabaseToSolrIndex" resultType="searchItem">
+		SELECT
+		a.id,
+		a.title,
+		a.sell_point,
+		a.price,
+		a.image,
+		b.name category_name,
+		c.item_desc
+		FROM
+		tb_item a,
+		tb_item_cat b,
+		tb_item_desc c
+		WHERE a.cid = b.id
+		AND a.id = c.item_id
+		AND a.status = 1
+	</select>
+</mapper>
